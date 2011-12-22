@@ -1,0 +1,28 @@
+<html>
+	<head>
+    <title>TfL Countdown</title>
+    <link rel='stylesheet' href='/css/style.css' type='text/css'>
+	</head>
+  <body>
+        
+    <div id="container">
+        
+    <h1>Buses <span class="lite">from Barnes</span></h1>
+    
+      <!--<pre><%= @data %></pre>-->
+
+      <table>
+      	<% @buses.each do |bus| %>
+      	<tr>
+      		<td><%= bus["routeName"] %></td>
+      		<td><%= bus["destination"] %></td>
+      		<td><%= bus["estimatedWait"] %></td>
+      		<td><%= bus["scheduledTime"] %></td>
+      	</tr>
+      	<% end %>
+      </table>
+    
+    </div>
+  
+  </body>
+</html>
