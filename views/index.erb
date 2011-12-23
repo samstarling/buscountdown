@@ -1,32 +1,34 @@
+<% content_for :title do %>London Buses<% end %>
+<% content_for :page_title do %>London Buses<% end %>
 
-      <div class="nine columns alpha">
-        <h4>Stops</h4>
-		<hr class="small"/>
-        <ul class="square">
-          <li><a href="#">Barnes</a></li>
-        </ul>
-        <h4 class="add-top">Your Favourites</h4>
-        <hr class="small"/>
-        <% if @favourites %>
-          <ul class="square">
-            <% @favourites.each do |stop| %>
-            <li><a href="/stop/<%= stop %>"><%= stop %></a></li>
-            <% end %>
-          </ul>  
-        <% else %>
-          <p>No favourites yet.</p>
-        <% end %>
-      </div>
+<div class="nine columns alpha">
+<h4>Stops</h4>
+<hr class="small"/>
+<ul class="square">
+  <li><a href="#">Barnes</a></li>
+</ul>
+<h4 class="add-top">Your Favourites</h4>
+<hr class="small"/>
+<% if @favourites %>
+  <ul class="square">
+    <% @favourites.each do |stop| %>
+    <li><a href="/stop/<%= stop %>"><%= stop %></a></li>
+    <% end %>
+  </ul>  
+<% else %>
+  <p>No favourites yet.</p>
+<% end %>
+</div>
       
-      <div class="seven columns omega"> 
-        <h4>Stop Number</h4>
-        <hr/>
-        <form action="/search" method="POST">
-          <input type="tel" name="stop" class="big-input"/>
-          <input type="submit" class="submit"/>
-        </form>
-        <h4>Cookies</h4>
-        <hr/>
-        <%= @cookies %>
-      </div>
-	  
+<div class="seven columns omega"> 
+<h4>Stop Number</h4>
+<hr/>
+<form action="/search" method="POST">
+  <input type="tel" name="stop" class="big-input"/>
+  <input type="submit" class="submit"/>
+</form>
+<h4>Cookies</h4>
+<hr/>
+<%= @cookies %>
+</div>
+	 

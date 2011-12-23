@@ -1,20 +1,24 @@
+<% content_for :title do %>Stop <%= @stop %> | London Buses<% end %>
+<% content_for :page_title do %>Stop <%= @stop %><% end %>
+
+
 <div class="nine columns alpha grey-mobile">
 
 	<h4>Countdown</h4>
-	<hr/>
+	<hr class="small"/>
 
 	<table>
 		<% @buses.each do |bus| %>
 	  <tr class="in-<%= bus["estimatedWait"].gsub(" ", "-") %> cancelled<%= bus["isCancelled"] %>">
-		  <td><a href="/stop/<%= @stop %>/<%= bus["routeName"] %>"><%= bus["routeName"] %></td>
-		  <td><%= bus["destination"] %></td>
-		  <td align="right"><%= bus["estimatedWait"] %></td>
-		  <td align="right"><%= bus["scheduledTime"] %></td>
+		  <td class="route" width="1"><%= bus["routeName"] %></td>
+		  <td class="destination"><%= bus["destination"] %></td>
+		  <td class="wait"><%= bus["estimatedWait"] %></td>
+		  <td class="time"><%= bus["scheduledTime"] %></td>
   	</tr>
   	<% end %>
   </table>
 
-  <h4 class="add-top">Routes</h4>
+  <h4 class="add-top">Filter by Route</h4>
   <hr/>
 
   <% @stop_routes.each do |route| %>

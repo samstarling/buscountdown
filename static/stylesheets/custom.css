@@ -13,6 +13,20 @@ header .header-inner {
 	padding: 0 10px;
 }
 
+.info {
+	background: #5BC0DE;
+	border: 1px solid #339BB9;
+	padding: 4px 9px 4px 9px;
+	margin-bottom: 8px;
+}
+
+.info, .info a {
+	color: #fff;
+	font-weight: bold;
+	font-size: 12px;
+	text-shadow: 0px 1px 0px rgba(0,0,0,0.3);
+}
+
 #footer {
 	color: #aaa;
 	border-top: 1px solid #eee;
@@ -78,6 +92,30 @@ table tr.in-due td {
 	color: #0a0 !important;
 }
 
+
+table tr td {
+	padding: 2px 0;
+}
+
+table tr td.route {
+	width: 1px;
+	padding: 0 10px 0 0;
+}
+
+table tr td.destination {
+	
+}
+
+table tr td.wait {
+	text-align: right;
+}
+
+table tr td.time {
+	text-align: right;
+	width: 1px;
+	padding: 0 0 0 10px;
+}
+
 table tr.cancelledtrue td {
 	text-decoration: line-through;
 	color: #c00;
@@ -97,13 +135,14 @@ small a {
 }
 
 .big-input {
-	width: 60px;
-	padding: 4px;
-	font-size: 15px;
+	float: left;
+	padding: 7px 6px !important;
+	width: 100px !important;
+	margin: 0 5px 0 0 !important;
 }
 
 .submit {
-
+	margin-top: 0px !important;
 }
 
 @media only screen and (max-device-width: 480px) {
