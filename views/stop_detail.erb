@@ -28,6 +28,14 @@
 </div>
       
 <div class="seven columns omega">
+	
+  <h4>Actions</h4>
+  <hr class="small"/>
+  <% if @is_favourite %>
+  	<a class="button" href="/stop/<%= @stop %>/favourite">Remove Favourite</a>
+  <% else %>
+	  <a class="button" href="/stop/<%= @stop %>/favourite">Add Favourite</a>
+  <% end %>
 
   <h4>Service Disruptions</h4>
   <hr/>
