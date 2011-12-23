@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8">
+	<title>TfL Countdown</title>
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link rel="stylesheet" href="/stylesheets/base.css">
+	<link rel="stylesheet" href="/stylesheets/skeleton.css">
+	<link rel="stylesheet" href="/stylesheets/layout.css">
+  <link rel="stylesheet" href="/stylesheets/custom.css">
+	<link rel="shortcut icon" href="/images/favicon.ico">
+	<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png">
+</head>
+<body>
+
+    <div class="container">
+   
+    <div class="sixteen columns">
+      
+	  <h3 class="remove-bottom" style="margin-top: 40px;">
+		  Buses <span class="lite">from <%= @stop %>
+		  <a href="/stop/<%= @stop %>/favourite">+</a>
+	  </h3>
+      <hr/>
+      
+      <div class="nine columns alpha">
+        <h4>Countdown</h4>
+        <hr/>
+        <table>
+        	<% @buses.each do |bus| %>
+        	<tr class="in-<%= bus["estimatedWait"].gsub(" ", "-") %> cancelled<%= bus["isCancelled"] %>">
+        		<td><%= bus["routeName"] %></td>
+        		<td><%= bus["destination"] %></td>
+        		<td align="right"><%= bus["estimatedWait"] %></td>
+        		<td align="right"><%= bus["scheduledTime"] %></td>
+        	</tr>
+        	<% end %>
+        </table>
+      </div>
+      
+      <div class="seven columns omega">
+        <h4>Service Disruptions</h4>
+        <hr/>
+        <h5>Critical Messages</h5>
+        <p><%= @data["serviceDisruptions"]["criticalMessages"] %></p>
+        <h5>Important Messages</h5>
+        <p><%= @data["serviceDisruptions"]["importantMessages"] %></p>
+        <h5>Information Messages</h5>
+        <p class="bottom"><%= @data["serviceDisruptions"]["infoMessages"] %></p>
+      </div>    
+    </div>
+      
+  </div>
+  
+  <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+  <script src="javascripts/tabs.js"></script>
+  
+</body>
+</html>

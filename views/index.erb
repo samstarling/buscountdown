@@ -1,30 +1,62 @@
-<html>
-	<head>
-    <title>TfL Countdown</title>
-    <link rel="stylesheet" href="/css/style.css" type="text/css">
-    <link rel="stylesheet" href="/css/mobile.css" media="only screen and (max-device-width: 480px)" type="text/css"/>
-    <meta name="viewport" content="width=device-width; initial-scale=0; maximum-scale=0;">
-	</head>
-  <body>
-        
-    <div id="container">
-        
-    <h1>Buses <span class="lite">from Barnes</span></h1>
-    
-      <!--<pre><%= @data %></pre>-->
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8">
+	<title>TfL Countdown</title>
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link rel="stylesheet" href="/stylesheets/base.css">
+	<link rel="stylesheet" href="/stylesheets/skeleton.css">
+	<link rel="stylesheet" href="/stylesheets/layout.css">
+  <link rel="stylesheet" href="/stylesheets/custom.css">
+	<link rel="shortcut icon" href="/images/favicon.ico">
+	<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png">
+</head>
+<body>
 
-      <table>
-      	<% @buses.each do |bus| %>
-      	<tr>
-      		<td><%= bus["routeName"] %></td>
-      		<td><%= bus["destination"] %></td>
-      		<td><%= bus["estimatedWait"] %></td>
-      		<td><%= bus["scheduledTime"] %></td>
-      	</tr>
-      	<% end %>
-      </table>
-    
+    <div class="container">
+   
+    <div class="sixteen columns">
+
+      <h3 class="remove-bottom" style="margin-top: 40px;">Favourites </h3>
+      <hr/>
+      
+      <div class="nine columns alpha">
+        <h4>Stops</h4>
+		    <hr/>
+        <ul>
+          <li><a href="#">Barnes</a></li>
+        </ul>
+        <h4>Your Stops</h4>
+        <hr/>
+        <% if @favourites %>
+          <ul>
+            <% @favourites.each do |stop| %>
+            <li><a href="/stop/<%= stop %>"><%= stop %></a></li>
+            <% end %>
+          </ul>  
+        <% else %>
+          <p>No favourites yet.</p>
+        <% end %>
+      </div>
+      
+      <div class="seven columns omega"> 
+        <h4>Stop Number</h4>
+        <hr/>
+        <form action="/search" method="POST">
+          <input type="tel" name="stop"/>
+          <input type="submit"/>
+        </form>
+        <h4>Cookies</h4>
+        <hr/>
+        <%= @cookies %>
+      </div>
+      
     </div>
-  
-  </body>
+    
+	<script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+	<script src="javascripts/tabs.js"></script>
+</body>
 </html>

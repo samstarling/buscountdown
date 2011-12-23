@@ -1,0 +1,65 @@
+table {
+	width: 100%
+}
+
+table tr td {
+	color: #aaa;
+}
+
+table tr.in-1-min td,
+table tr.in-2-min td,
+table tr.in-3-min td,
+table tr.in-4-min td,
+table tr.in-5-min td {
+	color: #444 !important;
+}
+
+table tr.in-6-min td,
+table tr.in-7-min td,
+table tr.in-8-min td,
+table tr.in-9-min td,
+table tr.in-10-min td {
+	color: #666 !important;
+}
+
+table tr.in-11-min td,
+table tr.in-12-min td,
+table tr.in-13-min td,
+table tr.in-14-min td,
+table tr.in-15-min td {
+	color: #888 !important;
+}
+
+table tr.in-16-min td,
+table tr.in-17-min td,
+table tr.in-18-min td,
+table tr.in-19-min td,
+table tr.in-20-min td {
+	color: #999 !important;
+}
+
+table tr.in-due td {
+	color: #0a0 !important;
+}
+
+table tr.cancelledtrue td {
+	text-decoration: line-through;
+	color: #c00;
+}
+
+ul {
+	list-style: square;
+	margin-left: 20px;
+}
+
+ul li {
+	margin-bottom: 7px;
+}
+
+@media only screen and (max-device-width: 480px) {
+	body { margin-bottom: 13px; }
+	h3 { margin-top: 10px !important; }
+	hr { margin: 10px 0; }
+	table { margin-bottom: 20px; }
+	.bottom { margin-bottom: 0px !important; }
+}
