@@ -1,3 +1,39 @@
+header {
+	background: #c00;
+	margin-bottom: 20px;
+	padding: 3px 0;
+	color: #fff;
+}
+
+header a {
+	color: #fff !important;
+}
+
+header .header-inner {
+	padding: 0 10px;
+}
+
+#footer {
+	color: #aaa;
+	border-top: 1px solid #eee;
+	padding-top: 15px;
+	margin-top: 15px;
+}
+
+#page-header {
+	padding-bottom: 10px;
+	margin-bottom: 20px !important;
+	border-bottom: 3px double #ddd;
+}
+
+hr.small {
+	margin-bottom: 15px;
+}
+
+.add-top {
+	margin-top: 25px;
+}
+
 table {
 	width: 100%
 }
@@ -56,8 +92,23 @@ ul li {
 	margin-bottom: 7px;
 }
 
+small a {
+	color: #06f !important;
+}
+
+.big-input {
+	width: 60px;
+	padding: 4px;
+	font-size: 15px;
+}
+
+.submit {
+
+}
+
 @media only screen and (max-device-width: 480px) {
 	body { margin-bottom: 13px; }
+	header { margin-bottom: 0; }
 	h3 { margin-top: 10px !important; }
 	hr { margin: 10px 0; }
 	table { margin-bottom: 20px; }

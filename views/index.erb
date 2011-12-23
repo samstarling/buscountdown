@@ -15,22 +15,30 @@
 	<link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png">
 </head>
 <body>
+	
+	<header>
+		<div class="container">
+			<div class="sixteen columns">
+				<a href="/">London Buses</a>
+			</div>
+		</div>
+	</header>
+	
 
     <div class="container">
    
     <div class="sixteen columns">
 
-      <h3 class="remove-bottom" style="margin-top: 40px;">Favourites </h3>
-      <hr/>
+      <h3 id="page-header" class="remove-bottom">London Buses</h3>
       
       <div class="nine columns alpha">
         <h4>Stops</h4>
-		    <hr/>
+		<hr class="small"/>
         <ul>
           <li><a href="#">Barnes</a></li>
         </ul>
-        <h4>Your Stops</h4>
-        <hr/>
+        <h4 class="add-top">Your Favourites</h4>
+        <hr class="small"/>
         <% if @favourites %>
           <ul>
             <% @favourites.each do |stop| %>
@@ -46,15 +54,23 @@
         <h4>Stop Number</h4>
         <hr/>
         <form action="/search" method="POST">
-          <input type="tel" name="stop"/>
-          <input type="submit"/>
+          <input type="tel" name="stop" class="big-input"/>
+          <input type="submit" class="submit"/>
         </form>
         <h4>Cookies</h4>
         <hr/>
         <%= @cookies %>
       </div>
+	  
+	  
       
     </div>
+	
+  <div class="sixteen columns" id="footer">
+    Data taken from the TfL Countdown API
+  </div>
+	
+</div>
     
 	<script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
 	<script src="javascripts/tabs.js"></script>

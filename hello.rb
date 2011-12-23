@@ -23,6 +23,13 @@ get '/stop/:id' do
   @data = JSON.parse(response)
   @buses = @data["arrivals"]
   @cookie = request.cookies["bus_stops"]
+  @is_favourite = false
+  if @cookie
+    stops = @cookie.split(',')
+    if stops.include? params[:id]
+      @is_favourite = true
+    end
+  end
   erb :stop_detail
 end
 
@@ -31,7 +38,7 @@ get '/stop/:id/favourite' do
   if cookie
     stops = cookie.split(',')
     if stops.include? params[:id]
-      # Nowt
+      stops.delete(params[:id])
     else
       stops << params[:id]
     end
