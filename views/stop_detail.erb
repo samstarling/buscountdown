@@ -25,19 +25,29 @@
 	</header>
 
     <div class="container">
+		
+		<div id="page-header" class="clearfix">
+		<div class="thirteen columns">
+	  	  <h3 class="remove-bottom">
+	  		  Buses <span class="lite">from <%= @stop %>
+      
+	        
+      
+	  	  </h3>
+		</div>
+		<div class="three columns">
+	        <% if @is_favourite %>
+	    		<a class="full-width button" href="/stop/<%= @stop %>/favourite">Remove Favourite</a>
+	        <% else %>
+	  		<a class="full-width button" href="/stop/<%= @stop %>/favourite">Add Favourite</a>
+	        <% end %>
+			
+		</div>
+		</div>
    
     <div class="sixteen columns">
       
-	  <h3 id="page-header" class="remove-bottom">
-		  Buses <span class="lite">from <%= @stop %>
-      <small>
-      <% if @is_favourite %>
-  		<a href="/stop/<%= @stop %>/favourite">Remove Favourite</a>
-      <% else %>
-		<a href="/stop/<%= @stop %>/favourite">Add Favourite</a>
-      <% end %>
-      </small>
-	  </h3>
+	  
       
       <div class="nine columns alpha grey-mobile">
         <h4>Countdown</h4>
@@ -57,12 +67,18 @@
       <div class="seven columns omega">
         <h4>Service Disruptions</h4>
         <hr/>
-        <h5>Critical Messages</h5>
-        <p><%= @data["serviceDisruptions"]["criticalMessages"] %></p>
-        <h5>Important Messages</h5>
-        <p><%= @data["serviceDisruptions"]["importantMessages"] %></p>
-        <h5>Information Messages</h5>
-        <p class="bottom"><%= @data["serviceDisruptions"]["infoMessages"] %></p>
+		
+		<ul class="tabs">
+			<li><a class="active" href="#critical">Critical</a></li>
+			<li><a href="#important">Important</a></li>
+			<li><a href="#information">Information</a></li>
+		</ul>
+		
+		<ul class="tabs-content">
+			<li class="active" id="critical"><%= @data["serviceDisruptions"]["criticalMessages"] %></li>
+			<li id="important"><%= @data["serviceDisruptions"]["importantMessages"] %></li>
+			<li id="information"><%= @data["serviceDisruptions"]["infoMessages"] %></li>
+		</ul>
       </div>    
     </div>
       
