@@ -8,6 +8,11 @@ set :public_folder, File.dirname(__FILE__) + '/static'
 
 API_URL = "http://countdown.tfl.gov.uk/stopBoard/%d"
 
+error do
+  @e = request.env['sinatra_error']
+  erb :exception
+end
+
 get '/' do
   stops = request.cookies["bus_stops"]
   @cookies = request.cookies
