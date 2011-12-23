@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+	<head>
+		<meta charset="utf-8">
+		<title><% yield_content :title %></title>
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link rel="stylesheet" href="/stylesheets/base.css">
+		<link rel="stylesheet" href="/stylesheets/skeleton.css">
+		<link rel="stylesheet" href="/stylesheets/layout.css">
+	  <link rel="stylesheet" href="/stylesheets/custom.css">
+		<link rel="shortcut icon" href="/images/favicon.ico">
+		<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+		<link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png">
+		<link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png">
+	</head>
+	<body>
+		<header>
+			<div class="container">
+				<div class="sixteen columns">
+					<a href="/">
+						London Buses
+					</a>
+				</div>
+			</div>
+		</header>
+	  <div class="container">
+	    <div class="sixteen columns">
+	      <h3 id="page-header" class="remove-bottom">
+					London Buses
+				</h3>
+				<%= yield %>
+			</div>
+		  <div class="sixteen columns" id="footer">
+				Data taken from the TfL Countdown API
+			</div>
+		</div>
+		<script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+		<script src="/javascripts/tabs.js"></script>
+	</body>
+</html>

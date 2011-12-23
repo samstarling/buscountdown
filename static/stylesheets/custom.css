@@ -21,7 +21,7 @@ header .header-inner {
 }
 
 #page-header {
-	padding-bottom: 0px;
+	padding-bottom: 10px;
 	margin-bottom: 20px !important;
 	border-bottom: 3px double #ddd;
 }
