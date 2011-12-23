@@ -34,13 +34,13 @@
       <div class="nine columns alpha">
         <h4>Stops</h4>
 		<hr class="small"/>
-        <ul>
+        <ul class="square">
           <li><a href="#">Barnes</a></li>
         </ul>
         <h4 class="add-top">Your Favourites</h4>
         <hr class="small"/>
         <% if @favourites %>
-          <ul>
+          <ul class="square">
             <% @favourites.each do |stop| %>
             <li><a href="/stop/<%= stop %>"><%= stop %></a></li>
             <% end %>

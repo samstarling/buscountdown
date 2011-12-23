@@ -83,7 +83,7 @@ table tr.cancelledtrue td {
 	color: #c00;
 }
 
-ul {
+ul.square {
 	list-style: square;
 	margin-left: 20px;
 }

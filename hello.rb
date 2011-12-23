@@ -16,12 +16,40 @@ get '/' do
   erb :index
 end
 
-
 get '/stop/:id' do
   @stop = params[:id]
   response = open(API_URL % @stop){ |f| f.read }
   @data = JSON.parse(response)
   @buses = @data["arrivals"]
+  @stop_routes = Array.new
+  @buses.each do |bus|
+    if @stop_routes.include? bus["routeName"]
+      #@stop_routes << bus["routeName"]
+    else
+      @stop_routes << bus["routeName"]
+    end
+  end
+  @cookie = request.cookies["bus_stops"]
+  @is_favourite = false
+  if @cookie
+    stops = @cookie.split(',')
+    if stops.include? params[:id]
+      @is_favourite = true
+    end
+  end
+  erb :stop_detail
+end
+
+get '/stop/:id/:route' do
+  @stop = params[:id]
+  response = open(API_URL % @stop){ |f| f.read }
+  @data = JSON.parse(response)
+  @buses = Array.new
+  @data["arrivals"].each do |bus|
+    if bus["routeName"] == params[:route]
+      @buses << bus
+    end
+  end
   @cookie = request.cookies["bus_stops"]
   @is_favourite = false
   if @cookie

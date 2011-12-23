@@ -27,65 +27,66 @@
     <div class="container">
 		
 		<div id="page-header" class="clearfix">
-		<div class="thirteen columns">
-	  	  <h3 class="remove-bottom">
-	  		  Buses <span class="lite">from <%= @stop %>
-      
-	        
-      
-	  	  </h3>
-		</div>
-		<div class="three columns">
-	        <% if @is_favourite %>
-	    		<a class="full-width button" href="/stop/<%= @stop %>/favourite">Remove Favourite</a>
-	        <% else %>
-	  		<a class="full-width button" href="/stop/<%= @stop %>/favourite">Add Favourite</a>
-	        <% end %>
-			
-		</div>
+  		<div class="thirteen columns">
+    	  <h3 class="remove-bottom">Buses <span class="lite">from <%= @stop %></h3>
+  		</div>
+  		<div class="three columns">
+        <% if @is_favourite %>
+      		<a class="full-width button" href="/stop/<%= @stop %>/favourite">Remove Favourite</a>
+        <% else %>
+  	  		<a class="full-width button" href="/stop/<%= @stop %>/favourite">Add Favourite</a>
+          <% end %>
+  		</div>
 		</div>
    
     <div class="sixteen columns">
-      
-	  
-      
+
       <div class="nine columns alpha grey-mobile">
         <h4>Countdown</h4>
         <hr/>
         <table>
         	<% @buses.each do |bus| %>
         	<tr class="in-<%= bus["estimatedWait"].gsub(" ", "-") %> cancelled<%= bus["isCancelled"] %>">
-        		<td><%= bus["routeName"] %></td>
+        		<td><a href="/stop/<%= @stop %>/<%= bus["routeName"] %>"><%= bus["routeName"] %></td>
         		<td><%= bus["destination"] %></td>
         		<td align="right"><%= bus["estimatedWait"] %></td>
         		<td align="right"><%= bus["scheduledTime"] %></td>
         	</tr>
         	<% end %>
         </table>
+        <h4 class="add-top">Routes</h4>
+        <hr/>
+        <% @stop_routes.each do |route| %>
+        <a href="/stop/<%= @stop %>/<%= route %>" class="button"><%= route %></a>
+        <% end %>
       </div>
       
       <div class="seven columns omega">
         <h4>Service Disruptions</h4>
         <hr/>
-		
-		<ul class="tabs">
-			<li><a class="active" href="#critical">Critical</a></li>
-			<li><a href="#important">Important</a></li>
-			<li><a href="#information">Information</a></li>
-		</ul>
-		
-		<ul class="tabs-content">
-			<li class="active" id="critical"><%= @data["serviceDisruptions"]["criticalMessages"] %></li>
-			<li id="important"><%= @data["serviceDisruptions"]["importantMessages"] %></li>
-			<li id="information"><%= @data["serviceDisruptions"]["infoMessages"] %></li>
-		</ul>
+    		<ul class="tabs">
+    			<li><a class="active" href="#critical">Critical</a></li>
+    			<li><a href="#important">Important</a></li>
+    			<li><a href="#information">Information</a></li>
+    		</ul>
+    		<ul class="tabs-content">
+    			<li class="active" id="critical">
+    			  <% if @data["serviceDisruptions"]["criticalMessages"].empty? %>
+              <p>Nothing to report.</p>
+            <% else %>
+              <%= @data["serviceDisruptions"]["criticalMessages"] %>
+            <% end %>
+    			</li>
+    			<li id="important"><%= @data["serviceDisruptions"]["importantMessages"] %></li>
+    			<li id="information"><%= @data["serviceDisruptions"]["infoMessages"] %></li>
+    		</ul>
       </div>    
     </div>
       
   </div>
   
   <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
-  <script src="javascripts/tabs.js"></script>
+  <script src="/javascripts/tabs.js"></script>
   
 </body>
 </html>
