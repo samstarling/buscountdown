@@ -1,5 +1,5 @@
 source 'http://rubygems.org'
 gem 'thin', '1.2.7'
 gem 'sinatra'
-gem 'sinatra-content-for'
+gem 'sinatra-contrib'
 gem 'countdown'
