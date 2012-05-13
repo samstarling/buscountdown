@@ -46,9 +46,28 @@ get '/stop/:id' do
   erb :stop_detail
 end
 
-get '/api/sushi.json' do
-  content_type :json
-  return {:sushi => ["Maguro", "Hamachi", "Uni", "Saba", "Ebi", "Sake", "Tai"]}.to_json
+get '/api/:id.json' do
+  @stop = params[:id]
+  response = open(API_URL % @stop){ |f| f.read }
+  @data = JSON.parse(response)
+  @buses = @data["arrivals"]
+  @stop_routes = Array.new
+  @buses.each do |bus|
+    if @stop_routes.include? bus["routeName"]
+      #@stop_routes << bus["routeName"]
+    else
+      @stop_routes << bus["routeName"]
+    end
+  end
+  @cookie = request.cookies["bus_stops"]
+  @is_favourite = false
+  if @cookie
+    stops = @cookie.split(',')
+    if stops.include? params[:id]
+      @is_favourite = true
+    end
+  end
+  return @data["arrivals"].to_json
 end
 
 get '/stop/:id/favourite' do
