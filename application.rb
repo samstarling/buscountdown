@@ -46,6 +46,11 @@ get '/stop/:id' do
   erb :stop_detail
 end
 
+get '/sushi.json' do
+  content_type :json
+  return {:sushi => ["Maguro", "Hamachi", "Uni", "Saba", "Ebi", "Sake", "Tai"]}.to_json
+end
+
 get '/stop/:id/favourite' do
   cookie = request.cookies["bus_stops"]
   if cookie
@@ -61,7 +66,6 @@ get '/stop/:id/favourite' do
   end
   redirect request.referer
 end
-
 
 get '/stop/:id/:route' do
   @stop = params[:id]
@@ -84,8 +88,6 @@ get '/stop/:id/:route' do
   end
   erb :stop_route_detail
 end
-
-
 
 post '/search' do
   redirect "/stop/#{params[:stop]}"

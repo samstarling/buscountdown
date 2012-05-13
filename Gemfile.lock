@@ -3,6 +3,8 @@ GEM
   specs:
     countdown (0.1.0)
       json
+    daemons (1.1.8)
+    eventmachine (0.12.10)
     json (1.6.3)
     rack (1.3.5)
     rack-protection (1.1.4)
@@ -13,6 +15,10 @@ GEM
       tilt (~> 1.3, >= 1.3.3)
     sinatra-content-for (0.2)
       sinatra
+    thin (1.2.7)
+      daemons (>= 1.0.9)
+      eventmachine (>= 0.12.6)
+      rack (>= 1.0.0)
     tilt (1.3.3)
 
 PLATFORMS
@@ -22,3 +28,4 @@ DEPENDENCIES
   countdown
   sinatra
   sinatra-content-for
+  thin (= 1.2.7)
