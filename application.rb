@@ -67,6 +67,7 @@ get '/api/:id.json' do
       @is_favourite = true
     end
   end
+  content_type 'text/json'
   return @data.to_json
 end
 
