@@ -46,7 +46,7 @@ get '/stop/:id' do
   erb :stop_detail
 end
 
-get '/sushi.json' do
+get '/api/sushi.json' do
   content_type :json
   return {:sushi => ["Maguro", "Hamachi", "Uni", "Saba", "Ebi", "Sake", "Tai"]}.to_json
 end
