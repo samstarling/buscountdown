@@ -67,7 +67,7 @@ get '/api/:id.json' do
       @is_favourite = true
     end
   end
-  return @data["arrivals"].to_json
+  return @data.to_json
 end
 
 get '/stop/:id/favourite' do
