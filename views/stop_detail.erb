@@ -4,18 +4,18 @@
 
 <div class="nine columns alpha grey-mobile">
 
-	<h4>Countdown</h4>
-	<hr class="small"/>
+    <h4>Countdown</h4>
+    <hr class="small"/>
 
-	<table>
-		<% @buses.each do |bus| %>
-	  <tr class="in-<%= bus["estimatedWait"].gsub(" ", "-") %> cancelled<%= bus["isCancelled"] %>">
-		  <td class="route" width="1"><%= bus["routeName"] %></td>
-		  <td class="destination"><%= bus["destination"] %></td>
-		  <td class="wait"><%= bus["estimatedWait"] %></td>
-		  <td class="time"><%= bus["scheduledTime"] %></td>
-  	</tr>
-  	<% end %>
+    <table>
+        <% @buses.each do |bus| %>
+      <tr class="in-<%= bus["estimatedWait"].gsub(" ", "-") %> cancelled<%= bus["isCancelled"] %>">
+          <td class="route" width="1"><%= bus["routeName"] %></td>
+          <td class="destination"><%= bus["destination"] %></td>
+          <td class="wait"><%= bus["estimatedWait"] %></td>
+          <td class="time"><%= bus["scheduledTime"] %></td>
+      </tr>
+      <% end %>
   </table>
 
   <h4 class="add-top">Filter by Route</h4>
@@ -28,28 +28,38 @@
 </div>
       
 <div class="seven columns omega">
-	
-  <h4>Actions</h4>
-  <hr class="small"/>
-  <% if @is_favourite %>
-  	<a class="button" href="/stop/<%= @stop %>/favourite">Remove Favourite</a>
-  <% else %>
-	  <a class="button" href="/stop/<%= @stop %>/favourite">Add Favourite</a>
-  <% end %>
+    <h4>Actions</h4>
+    <hr class="small"/>
+    <% if @is_favourite %>
+        <a class="button" href="/stop/<%= @stop %>/favourite">Remove Favourite</a>
+    <% else %>
+        <a class="button" href="/stop/<%= @stop %>/favourite">Add Favourite</a>
+    <% end %>
 
-  <h4>Service Disruptions</h4>
-  <hr/>
-	
-  <ul class="tabs">
-		<li><a class="active" href="#critical">Critical</a></li>
-		<li><a href="#important">Important</a></li>
-		<li><a href="#information">Information</a></li>
-	</ul>
-	
-  <ul class="tabs-content">
-		<li class="active" id="critical"><%= @data["serviceDisruptions"]["criticalMessages"] %></li>
-		<li id="important"><%= @data["serviceDisruptions"]["importantMessages"] %></li>
-		<li id="information"><%= @data["serviceDisruptions"]["infoMessages"] %></li>
-	</ul>
-  
+    <h4>Service Disruptions</h4>
+    <hr/>
+    
+    <ul class="tabs">
+        <% if @data["serviceDisruptions"]["criticalMessages"].empty? == false %>
+            <li><a href="#critical">Critical</a></li>
+        <% end %>
+        <% if @data["serviceDisruptions"]["importantMessages"].empty? == false %>
+            <li><a href="#important">Important</a></li>
+        <% end %>
+        <% if @data["serviceDisruptions"]["infoMessages"].empty? == false %>
+            <li><a class="active" href="#information">Information</a></li>
+        <% end %>
+    </ul>
+    
+    <ul class="tabs-content">
+        <% if @data["serviceDisruptions"]["criticalMessages"].empty? == false %>
+            <li id="critical"><%= @data["serviceDisruptions"]["criticalMessages"].join(" / ") %></li>
+        <% end %>
+        <% if @data["serviceDisruptions"]["importantMessages"].empty? == false %>
+            <li id="important"><%= @data["serviceDisruptions"]["importantMessages"].join(" / ") %></li>
+        <% end %>
+        <% if @data["serviceDisruptions"]["infoMessages"].empty? == false %>
+            <li class="active"  id="information"><%= @data["serviceDisruptions"]["infoMessages"].join(" / ") %></li>
+        <% end %>
+    </ul>
 </div>

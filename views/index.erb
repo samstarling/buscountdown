@@ -1,60 +1,47 @@
 <% content_for :title do %>London Buses<% end %>
 <% content_for :page_title do %>London Buses<% end %>
 
-<div class="ten columns alpha">
-	
-	<h4>Popular Stops</h4>
-	<hr class="small"/>
-
-	<ul class="square">
-		<li>
-			<a href="/stop/58071">Oxford Circus Stn / Margaret Street (RF)</a><br/>
-			<small>towards Trafalgar Square or Green Park</small>
-		</li>
-		<li>
-			<a href="/stop/57096">Victoria Station (H)</a><br/>
-			<small>towards Marble Arch or Knightsbridge</small>
-		</li>
-		<li>
-			<a href="/stop/50617">Brixton Water Lane (BB)</a><br/>
-			<small>towards Clapham Park or Streatham</small>
-		</li>
-		<li>
-			<a href="/stop/55951">Barnes Station (A)</a><br/>
-			<small>towards Hammersmith or Putney</small>
-		</li>
-	</ul>
-
-	
-
+<div class="six columns alpha">
+    <h4>Stop Number</h4>
+    <hr class="small"/>
+    <form action="/search" method="POST">
+        <input type="tel" name="stop" class="big-input"/>
+        <input type="submit" class="submit"/>
+    </form>
+    
+    <h4>Your Favourites</h4>
+    <hr class="small"/>
+    
+    <% if @favourites %>
+        <ul class="square">
+            <% @favourites.each do |stop| %>
+            <li><a href="/stop/<%= stop %>"><%= stop %></a></li>
+            <% end %>
+        </ul>  
+    <% else %>
+        <p>No favourites yet.</p>
+    <% end %>
 </div>
-      
-<div class="six columns omega">
-	
-	<h4>Your Favourites</h4>
-	<hr class="small"/>
 
-	<% if @favourites %>
-  		<ul class="square">
-			<% @favourites.each do |stop| %>
-			<li><a href="/stop/<%= stop %>"><%= stop %></a></li>
-			<% end %>
-		</ul>  
-	<% else %>
-		<p>No favourites yet.</p>
-	<% end %>
-	 
-
-	<h4>Stop Number</h4>
-	<hr class="small"/>
-
-	<form action="/search" method="POST">
-		<input type="tel" name="stop" class="big-input"/>
-		<input type="submit" class="submit"/>
-	</form>
-
-	<h4>Cookies</h4>
-	<hr class="small"/>
-	<%= @cookies %>
-
+<div class="ten columns omega">
+    <h4>Popular Stops</h4>
+    <hr class="small"/>
+    <ul class="square">
+        <li>
+            <a href="/stop/77387">Putney / St. Mary's Church (S)</a><br/>
+            <small>Northbound</small>
+        </li>
+        <li>
+            <a href="/stop/58304">South Africa Road (M)</a><br/>
+            <small>Southbound</small>
+        </li>
+        <li>
+            <a href="/stop/50617">Brixton Water Lane (BB)</a><br/>
+            <small>towards Clapham Park or Streatham</small>
+        </li>
+        <li>
+            <a href="/stop/55951">Barnes Station (A)</a><br/>
+            <small>towards Hammersmith or Putney</small>
+        </li>
+    </ul>
 </div>
